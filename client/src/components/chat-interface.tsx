@@ -190,7 +190,8 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
                       : "bg-gradient-to-r from-bodegoes to-bodegoes-dark text-white rounded-2xl rounded-tr-md"
                   }`}>
                     <p className={message.isAI ? "text-gray-800" : "text-white"}>
-                      {message.content}
+                      {console.log("Rendering message:", message.id, "isAI:", message.isAI, "content:", message.content)}
+                      {message.content || `[Missing content for message ${message.id}]`}
                     </p>
                   </Card>
                   <p className={`text-xs text-gray-500 mt-1 ${message.isAI ? "ml-2" : "mr-2 text-right"}`}>
