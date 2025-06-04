@@ -29,6 +29,11 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
     queryFn: () => chatApi.getMessages(session.id),
   });
 
+  // Debug: Log messages to console
+  useEffect(() => {
+    console.log("Messages data:", messages);
+  }, [messages]);
+
   const sendMessageMutation = useMutation({
     mutationFn: (content: string) => chatApi.sendMessage(session.id, content),
     onSuccess: () => {
