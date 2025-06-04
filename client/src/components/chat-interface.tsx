@@ -186,7 +186,7 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
                       ? "bg-white rounded-2xl rounded-tl-md shadow-sm border border-gray-100" 
                       : "bg-gradient-to-r from-bodegoes to-bodegoes-dark text-white rounded-2xl rounded-tr-md"
                   }`}>
-                    <p className={message.isAI ? "text-gray-800" : "text-white"}>
+                    <p className={message.isAI ? "text-gray-800" : "text-white font-medium"} style={!message.isAI ? {color: 'white'} : {}}>
                       {message.content}
                     </p>
                     {!message.isAI && (
