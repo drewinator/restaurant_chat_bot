@@ -186,14 +186,9 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
                       ? "bg-white rounded-2xl rounded-tl-md shadow-sm border border-gray-100" 
                       : "bg-gradient-to-r from-bodegoes to-bodegoes-dark text-white rounded-2xl rounded-tr-md"
                   }`}>
-                    <p className={message.isAI ? "text-gray-800" : "text-white font-medium"} style={!message.isAI ? {color: 'white'} : {}}>
+                    <p className={message.isAI ? "text-gray-800" : "text-white font-medium"}>
                       {message.content}
                     </p>
-                    {!message.isAI && (
-                      <div style={{fontSize: '10px', color: 'red'}}>
-                        Debug: {JSON.stringify({id: message.id, content: message.content, isAI: message.isAI})}
-                      </div>
-                    )}
                   </Card>
                   <p className={`text-xs text-gray-500 mt-1 ${message.isAI ? "ml-2" : "mr-2 text-right"}`}>
                     {formatTime(message.timestamp)}
