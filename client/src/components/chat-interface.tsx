@@ -189,6 +189,11 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
                     <p className={message.isAI ? "text-gray-800" : "text-white"}>
                       {message.content}
                     </p>
+                    {!message.isAI && (
+                      <div style={{fontSize: '10px', color: 'red'}}>
+                        Debug: {JSON.stringify({id: message.id, content: message.content, isAI: message.isAI})}
+                      </div>
+                    )}
                   </Card>
                   <p className={`text-xs text-gray-500 mt-1 ${message.isAI ? "ml-2" : "mr-2 text-right"}`}>
                     {formatTime(message.timestamp)}
