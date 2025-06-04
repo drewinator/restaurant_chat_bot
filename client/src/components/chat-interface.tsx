@@ -169,15 +169,21 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
             {messages.map((message: Message) => (
               <div
                 key={message.id}
-                className={`flex items-start space-x-3 ${message.isAI ? "" : "justify-end"}`}
+                className={`flex items-start space-x-3 ${message.isAI ? "" : "flex-row-reverse space-x-reverse"}`}
               >
-                {message.isAI && (
-                  <div className="w-8 h-8 bg-gradient-to-br from-bodegoes to-bodegoes-dark rounded-full flex items-center justify-center flex-shrink-0">
-                    <Bot className="text-white" size={14} />
-                  </div>
-                )}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
+                  {message.isAI ? (
+                    <div className="w-8 h-8 bg-gradient-to-br from-bodegoes to-bodegoes-dark rounded-full flex items-center justify-center">
+                      <Bot className="text-white" size={14} />
+                    </div>
+                  ) : (
+                    <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">{getUserInitials()}</span>
+                    </div>
+                  )}
+                </div>
                 
-                <div className={`flex-1 ${message.isAI ? "" : "max-w-xs sm:max-w-md"}`}>
+                <div className={`${message.isAI ? "flex-1" : "max-w-xs sm:max-w-md"}`}>
                   <Card className={`px-4 py-3 ${
                     message.isAI 
                       ? "bg-white rounded-2xl rounded-tl-md shadow-sm border border-gray-100" 
@@ -191,12 +197,6 @@ export function ChatInterface({ username, session }: ChatInterfaceProps) {
                     {formatTime(message.timestamp)}
                   </p>
                 </div>
-
-                {!message.isAI && (
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-medium">{getUserInitials()}</span>
-                  </div>
-                )}
               </div>
             ))}
 
